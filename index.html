@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sheshram Prajapati | MIS Executive</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --purple:#5b2cff;
+    --purple2:#3514b8;
+    --pink:#e5007d;
+    --dark:#17132a;
+    --text:#262238;
+    --muted:#777286;
+    --light:#f6f4fb;
+    --white:#fff;
+    --border:#e8e4f0;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Inter,Arial,sans-serif;
+    color:var(--text);
+    background:#fff;
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+.container{
+    width:min(1200px,92%);
+    margin:auto;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:74px;
+    background:#fff;
+    z-index:1000;
+    transition:.3s;
+}
+
+.header.scrolled{
+    box-shadow:0 4px 25px rgba(50,30,80,.1);
+}
+
+.nav{
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:24px;
+    font-weight:900;
+    color:var(--purple);
+}
+
+.logo-symbol{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--purple),var(--pink));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-size:13px;
+    font-weight:900;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:28px;
+}
+
+.nav-links a{
+    font-size:13px;
+    font-weight:600;
+    color:#393346;
+}
+
+.nav-links a:hover{
+    color:var(--purple);
+}
+
+.nav-cta{
+    background:var(--purple);
+    color:#fff!important;
+    padding:12px 22px;
+    border-radius:25px;
+}
+
+.menu{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    margin-top:74px;
+    min-height:620px;
+    background:
+        radial-gradient(circle at 85% 20%,rgba(229,0,125,.15),transparent 25%),
+        radial-gradient(circle at 20% 80%,rgba(91,44,255,.13),transparent 30%),
+        linear-gradient(135deg,#f7f3ff,#fff 50%,#fff4fb);
+    position:relative;
+    overflow:hidden;
+}
+
+.hero-grid{
+    min-height:620px;
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:60px;
+    align-items:center;
+}
+
+.hero-label{
+    display:inline-flex;
+    padding:9px 15px;
+    border-radius:30px;
+    background:#eee9ff;
+    color:var(--purple);
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    margin-bottom:22px;
+}
+
+.hero h1{
+    font-size:clamp(46px,6vw,76px);
+    line-height:1;
+    letter-spacing:-4px;
+    color:var(--dark);
+}
+
+.hero h1 span{
+    background:linear-gradient(90deg,var(--purple),var(--pink));
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero-text{
+    max-width:650px;
+    margin:24px 0 30px;
+    color:#676174;
+    line-height:1.75;
+    font-size:17px;
+}
+
+.hero-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.btn{
+    padding:15px 23px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:800;
+    transition:.25s;
+    display:inline-block;
+}
+
+.btn-primary{
+    color:#fff;
+    background:linear-gradient(100deg,var(--purple),var(--pink));
+    box-shadow:0 12px 28px rgba(91,44,255,.22);
+}
+
+.btn-light{
+    background:#fff;
+    border:1px solid var(--border);
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+/* HERO PROFILE */
+
+.hero-visual{
+    position:relative;
+    min-height:460px;
+}
+
+.profile-card{
+    position:absolute;
+    right:20px;
+    top:20px;
+    width:360px;
+    min-height:420px;
+    border-radius:38px;
+    background:linear-gradient(145deg,#4b21d4,#7929a9);
+    color:#fff;
+    padding:32px;
+    overflow:hidden;
+    box-shadow:0 30px 70px rgba(70,35,150,.22);
+}
+
+.profile-card:before{
+    content:"";
+    position:absolute;
+    width:320px;
+    height:320px;
+    border-radius:50%;
+    background:rgba(255,255,255,.1);
+    right:-120px;
+    top:-120px;
+}
+
+.profile-card:after{
+    content:"MIS";
+    position:absolute;
+    right:15px;
+    bottom:-20px;
+    font-size:100px;
+    font-weight:900;
+    color:rgba(255,255,255,.08);
+}
+
+.profile-content{
+    position:absolute;
+    bottom:30px;
+    left:32px;
+    z-index:2;
+}
+
+.profile-placeholder,
+.profile-photo{
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    border:4px solid #fff;
+    object-fit:cover;
+    margin-bottom:20px;
+}
+
+.profile-placeholder{
+    background:#fff;
+    color:var(--purple);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    font-weight:900;
+}
+
+.profile-content h2{
+    font-size:25px;
+}
+
+.profile-content p{
+    color:#e9ddff;
+    font-size:13px;
+    margin-top:5px;
+}
+
+/* FLOATING CARD */
+
+.float-card{
+    position:absolute;
+    left:0;
+    bottom:25px;
+    width:220px;
+    padding:20px;
+    border-radius:22px;
+    background:#fff;
+    box-shadow:0 20px 50px rgba(40,20,80,.14);
+    z-index:4;
+}
+
+.float-card small{
+    color:#999;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.float-card strong{
+    display:block;
+    font-size:30px;
+    color:var(--purple);
+    margin-top:5px;
+}
+
+.float-card span{
+    font-size:12px;
+    color:#777;
+}
+
+/* ================= STATS ================= */
+
+.stats{
+    background:#17132a;
+    color:#fff;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+}
+
+.stat{
+    text-align:center;
+    padding:35px 15px;
+    border-right:1px solid #302b42;
+}
+
+.stat:last-child{
+    border:none;
+}
+
+.stat h2{
+    font-size:38px;
+}
+
+.stat p{
+    color:#a7a1b5;
+    font-size:12px;
+    margin-top:3px;
+}
+
+/* ================= COMMON ================= */
+
+section{
+    padding:100px 0;
+}
+
+.label{
+    color:var(--purple);
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:11px;
+    font-weight:900;
+    margin-bottom:12px;
+}
+
+.title{
+    font-size:50px;
+    line-height:1.05;
+    letter-spacing:-2.5px;
+}
+
+.description{
+    max-width:680px;
+    color:var(--muted);
+    margin-top:15px;
+    line-height:1.7;
+}
+
+/* ================= ABOUT ================= */
+
+.about{
+    background:var(--light);
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:.8fr 1.2fr;
+    gap:75px;
+    align-items:center;
+}
+
+.about-number{
+    font-size:190px;
+    font-weight:900;
+    color:var(--purple);
+    line-height:.75;
+    letter-spacing:-12px;
+}
+
+.about-copy p{
+    color:#625d6e;
+    line-height:1.8;
+    margin-bottom:18px;
+}
+
+.pills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+    margin-top:25px;
+}
+
+.pill{
+    background:#fff;
+    border:1px solid var(--border);
+    padding:9px 14px;
+    border-radius:25px;
+    font-size:11px;
+    font-weight:700;
+}
+
+/* ================= SERVICE TILES ================= */
+
+.services{
+    background:#fff;
+}
+
+.service-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-top:48px;
+}
+
+.service{
+    min-height:230px;
+    border-radius:28px;
+    padding:30px;
+    background:#fff;
+    border:1px solid var(--border);
+    transition:.3s;
+    position:relative;
+    overflow:hidden;
+}
+
+.service:hover{
+    transform:translateY(-7px);
+    box-shadow:0 20px 45px rgba(55,30,100,.1);
+}
+
+.service-icon{
+    width:50px;
+    height:50px;
+    border-radius:16px;
+    background:#eee9ff;
+    color:var(--purple);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:900;
+    margin-bottom:20px;
+}
+
+.service h3{
+    font-size:19px;
+    margin-bottom:10px;
+}
+
+.service p{
+    color:#777080;
+    font-size:13px;
+    line-height:1.7;
+}
+
+/* ================= EXPERIENCE ================= */
+
+.experience{
+    background:var(--light);
+}
+
+.timeline{
+    margin-top:50px;
+    position:relative;
+    max-width:1000px;
+}
+
+.timeline:before{
+    content:"";
+    position:absolute;
+    left:8px;
+    top:0;
+    bottom:0;
+    width:2px;
+    background:#ded9e8;
+}
+
+.job{
+    position:relative;
+    padding-left:48px;
+    margin-bottom:60px;
+}
+
+.job:before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:5px;
+    width:17px;
+    height:17px;
+    background:linear-gradient(135deg,var(--purple),var(--pink));
+    border-radius:50%;
+    border:4px solid var(--light);
+}
+
+.job-date{
+    font-size:11px;
+    font-weight:900;
+    color:var(--purple);
+    letter-spacing:1px;
+}
+
+.job h3{
+    font-size:26px;
+    margin:6px 0 4px;
+}
+
+.company{
+    font-size:13px;
+    color:#817b8c;
+    font-weight:700;
+    margin-bottom:14px;
+}
+
+.job p{
+    color:#686273;
+    line-height:1.8;
+    font-size:14px;
+}
+
+/* ================= BUSINESS ================= */
+
+.business-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-top:45px;
+}
+
+.business-card{
+    min-height:270px;
+    border-radius:30px;
+    padding:32px;
+    color:#fff;
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(135deg,#24144f,#5b2cff);
+}
+
+.business-card:nth-child(2){
+    background:linear-gradient(135deg,#7d1467,#e5007d);
+}
+
+.business-card:nth-child(3){
+    background:linear-gradient(135deg,#311d78,#24144f);
+}
+
+.business-card:after{
+    content:"";
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:rgba(255,255,255,.08);
+    position:absolute;
+    right:-80px;
+    bottom:-80px;
+}
+
+.business-card h3{
+    font-size:25px;
+    margin-bottom:18px;
+}
+
+.business-card p{
+    color:#eee7ff;
+    line-height:2;
+    font-size:13px;
+}
+
+/* ================= SKILLS ================= */
+
+.skills{
+    background:#17132a;
+    color:#fff;
+}
+
+.skills .description{
+    color:#aaa4b7;
+}
+
+.skills-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:45px;
+}
+
+.skill{
+    padding:14px 18px;
+    border:1px solid #393249;
+    border-radius:30px;
+    font-size:12px;
+    font-weight:600;
+    transition:.25s;
+}
+
+.skill:hover{
+    background:linear-gradient(100deg,var(--purple),var(--pink));
+    border-color:transparent;
+}
+
+/* ================= EDUCATION ================= */
+
+.education{
+    background:var(--light);
+}
+
+.edu-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-top:45px;
+}
+
+.edu{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:25px;
+    padding:30px;
+}
+
+.edu-year{
+    color:var(--purple);
+    font-size:12px;
+    font-weight:900;
+}
+
+.edu h3{
+    margin:10px 0;
+}
+
+.edu p{
+    color:#777080;
+    font-size:13px;
+}
+
+/* ================= SUPPORT ================= */
+
+.support{
+    background:#fff;
+}
+
+.support-box{
+    margin-top:45px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.support-card{
+    padding:28px;
+    border-radius:24px;
+    background:#f8f6fc;
+    border:1px solid var(--border);
+}
+
+.support-card h3{
+    margin-bottom:8px;
+}
+
+.support-card p{
+    color:#777080;
+    font-size:13px;
+    line-height:1.6;
+}
+
+.support-link{
+    display:inline-block;
+    color:var(--purple);
+    font-weight:800;
+    font-size:12px;
+    margin-top:15px;
+}
+
+/* ================= CONTACT ================= */
+
+.contact{
+    background:linear-gradient(125deg,#32129e,#74115f);
+    color:#fff;
+}
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+    align-items:center;
+}
+
+.contact .label{
+    color:#e2caff;
+}
+
+.contact h2{
+    font-size:62px;
+    line-height:1;
+    letter-spacing:-3px;
+}
+
+.contact-text{
+    color:#e8ddf2;
+    margin-top:20px;
+    max-width:550px;
+    line-height:1.7;
+}
+
+.contact-card{
+    background:#fff;
+    color:#222;
+    border-radius:30px;
+    padding:34px;
+}
+
+.contact-item{
+    padding:17px 0;
+    border-bottom:1px solid #eee;
+}
+
+.contact-item:last-child{
+    border:none;
+}
+
+.contact-item small{
+    display:block;
+    color:#999;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:5px;
+}
+
+.contact-item a{
+    font-weight:800;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#110d1c;
+    color:#898393;
+    padding:28px 0;
+}
+
+.footer{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.footer strong{
+    color:#fff;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+    .nav-links{
+        display:none;
+        position:absolute;
+        top:74px;
+        left:0;
+        width:100%;
+        background:#fff;
+        flex-direction:column;
+        padding:25px;
+        gap:20px;
+        box-shadow:0 10px 25px rgba(0,0,0,.08);
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    .hero{
+        padding:70px 0;
+    }
+
+    .hero-grid,
+    .about-grid,
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero-visual{
+        min-height:470px;
+    }
+
+    .profile-card{
+        right:0;
+        width:100%;
+        max-width:360px;
+    }
+
+    .service-grid,
+    .business-grid,
+    .edu-grid,
+    .support-box{
+        grid-template-columns:1fr;
+    }
+
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .stat:nth-child(2){
+        border-right:none;
+    }
+
+    .title{
+        font-size:40px;
+    }
+
+    .about-number{
+        font-size:130px;
+    }
+
+    .contact h2{
+        font-size:50px;
+    }
+}
+
+@media(max-width:500px){
+
+    section{
+        padding:75px 0;
+    }
+
+    .hero h1{
+        font-size:45px;
+        letter-spacing:-2px;
+    }
+
+    .hero-text{
+        font-size:15px;
+    }
+
+    .float-card{
+        left:0;
+        bottom:5px;
+        width:190px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="header" id="header">
+
+<div class="container nav">
+
+<a href="#home" class="logo">
+    <div class="logo-symbol">SP</div>
+    Sheshram
+</a>
+
+<nav class="nav-links" id="navLinks">
+
+<a href="#about">About</a>
+<a href="#services">Expertise</a>
+<a href="#experience">Experience</a>
+<a href="#business">Business</a>
+<a href="#skills">Skills</a>
+<a href="#education">Education</a>
+<a href="#contact" class="nav-cta">Let's Talk</a>
+
+</nav>
+
+<div class="menu" onclick="toggleMenu()">☰</div>
+
+</div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+<div class="container hero-grid">
+
+<div>
+
+<div class="hero-label">
+    MIS • DATA • WFM • REPORTING
+</div>
+
+<h1>
+    More than<br>
+    reports.<br>
+    <span>Real insights.</span>
+</h1>
+
+<p class="hero-text">
+    MIS Executive with 8+ years of experience in MIS reporting,
+    data analysis, workforce management, performance tracking
+    and business reporting across BPO and Telecom operations.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#experience" class="btn btn-primary">
+    Explore My Experience →
+</a>
+
+<a href="#contact" class="btn btn-light">
+    Contact Me
+</a>
+
+</div>
+
+</div>
+
+
+<div class="hero-visual">
+
+<div class="profile-card">
+
+<div class="profile-content">
+
+<!--
+PHOTO:
+Put profile.jpg beside index.html.
+Replace the div below with:
+
+<img src="profile.jpg"
+     class="profile-photo"
+     alt="Sheshram Prajapati">
+-->
+
+<div class="profile-placeholder">
+    SP
+</div>
+
+<h2>
+    Sheshram Prajapati
+</h2>
+
+<p>
+    MIS Executive | Data Analysis | WFM
+</p>
+
+</div>
+
+</div>
+
+
+<div class="float-card">
+
+<small>Experience</small>
+
+<strong>8+</strong>
+
+<span>Years in MIS & Operations</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= STATS ================= -->
+
+<div class="stats">
+
+<div class="container stats-grid">
+
+<div class="stat">
+    <h2>8+</h2>
+    <p>Years Experience</p>
+</div>
+
+<div class="stat">
+    <h2>5</h2>
+    <p>MIS Executives Led</p>
+</div>
+
+<div class="stat">
+    <h2>3+</h2>
+    <p>Organizations</p>
+</div>
+
+<div class="stat">
+    <h2>360°</h2>
+    <p>Operational View</p>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about" id="about">
+
+<div class="container about-grid">
+
+<div>
+
+<div class="label">
+    About Me
+</div>
+
+<div class="about-number">
+    08
+</div>
+
+</div>
+
+
+<div class="about-copy">
+
+<h2 class="title">
+    Turning operational<br>
+    data into useful<br>
+    decisions.
+</h2>
+
+<br>
+
+<p>
+I am an MIS professional with 8+ years of experience in
+MIS reporting, data analysis, workforce management,
+performance tracking and business reporting across BPO
+and Telecom operations.
+</p>
+
+<p>
+Experienced in handling large customer datasets, preparing
+daily, weekly and monthly MIS, Excel dashboards, KPI reports,
+management reports and performance analysis.
+</p>
+
+<p>
+Strong exposure to Airtel DTH, Broadband, Prepaid,
+Postpaid, Retention, CPE Recovery, New Acquisition,
+VAS and Installation processes.
+</p>
+
+<div class="pills">
+
+<span class="pill">MIS Reporting</span>
+<span class="pill">Data Analysis</span>
+<span class="pill">WFM</span>
+<span class="pill">KPI Analysis</span>
+<span class="pill">Business Reporting</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= EXPERTISE ================= -->
+
+<section class="services" id="services">
+
+<div class="container">
+
+<div class="label">
+    My Expertise
+</div>
+
+<h2 class="title">
+    Everything you need<br>
+    from an MIS professional.
+</h2>
+
+<p class="description">
+    Reporting, analysis, dashboards and operational insights
+    built around business requirements.
+</p>
+
+
+<div class="service-grid">
+
+<div class="service">
+
+<div class="service-icon">01</div>
+
+<h3>MIS Reporting</h3>
+
+<p>
+Daily, weekly and monthly MIS, management reports,
+business reporting and operational dashboards.
+</p>
+
+</div>
+
+
+<div class="service">
+
+<div class="service-icon">02</div>
+
+<h3>Advanced Excel</h3>
+
+<p>
+Pivot Tables, XLOOKUP, VLOOKUP, INDEX-MATCH,
+SUMIFS, COUNTIFS, Power Query and dashboards.
+</p>
+
+</div>
+
+
+<div class="service">
+
+<div class="service-icon">03</div>
+
+<h3>Data Analysis</h3>
+
+<p>
+KPI analysis, productivity, MoM, YoY,
+customer behaviour and root cause analysis.
+</p>
+
+</div>
+
+
+<div class="service">
+
+<div class="service-icon">04</div>
+
+<h3>WFM Analytics</h3>
+
+<p>
+Attendance, login hours, AHT, occupancy,
+utilization and productivity analysis.
+</p>
+
+</div>
+
+
+<div class="service">
+
+<div class="service-icon">05</div>
+
+<h3>Business Reporting</h3>
+
+<p>
+Sales, revenue, retention, recovery,
+productivity and achievement tracking.
+</p>
+
+</div>
+
+
+<div class="service">
+
+<div class="service-icon">06</div>
+
+<h3>Report Automation</h3>
+
+<p>
+Advanced Excel techniques to reduce repetitive
+manual reporting and improve accuracy.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= EXPERIENCE ================= -->
+
+<section class="experience" id="experience">
+
+<div class="container">
+
+<div class="label">
+    Career Journey
+</div>
+
+<h2 class="title">
+    Experience that<br>
+    makes the difference.
+</h2>
+
+<p class="description">
+    From broadband operations to senior MIS responsibilities
+    across telecom and BPO environments.
+</p>
+
+
+<div class="timeline">
+
+<div class="job">
+
+<div class="job-date">
+    NOV 2020 — PRESENT
+</div>
+
+<h3>
+    Senior MIS Executive
+</h3>
+
+<div class="company">
+    LEEWAY INTERNATIONAL PVT. LTD.
+</div>
+
+<p>
+Manage MIS and business reporting for multiple Airtel
+Telecom and DTH processes including DTH Retention,
+CPE Recovery, New Acquisition, VAS, Postpaid and
+Prepaid Acquisition. Lead a team of 5 MIS Executives.
+Work with large customer datasets, build dashboards,
+monitor WFM and agent performance, track KPIs and
+coordinate with Operations, HR, Finance, Quality, WFM
+and Client teams.
+</p>
+
+</div>
+
+
+<div class="job">
+
+<div class="job-date">
+    AUG 2018 — NOV 2020
+</div>
+
+<h3>
+    MIS Executive / Field Coordinator
+</h3>
+
+<div class="company">
+    SIGMA OUTSOURCING PVT. LTD.
+</div>
+
+<p>
+Managed MIS and field operations for Airtel Broadband
+Installation in Delhi NCR. Coordinated with Airtel HDO,
+GIS, Marketing, Field and Technical teams. Prepared
+daily, weekly and monthly reports covering leads,
+installation, closure, productivity and operational KPIs.
+</p>
+
+</div>
+
+
+<div class="job">
+
+<div class="job-date">
+    AUG 2017 — AUG 2018
+</div>
+
+<h3>
+    MIS Executive
+</h3>
+
+<div class="company">
+    LEEWAY BPO
+</div>
+
+<p>
+Managed MIS reporting for Airtel Broadband lead generation
+operations across India. Prepared performance reports,
+managed WFM and agent reporting, monitored campaign KPIs
+and supported Operations teams with daily reporting and
+performance tracking.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= BUSINESS ================= -->
+
+<section id="business">
+
+<div class="container">
+
+<div class="label">
+    Business Exposure
+</div>
+
+<h2 class="title">
+    Telecom is where<br>
+    I built my expertise.
+</h2>
+
+<p class="description">
+    Hands-on exposure across DTH, Telecom and Broadband
+    business processes.
+</p>
+
+
+<div class="business-grid">
+
+<div class="business-card">
+
+<h3>Airtel DTH</h3>
+
+<p>
+DTH Retention<br>
+CPE Recovery<br>
+New Acquisition<br>
+VAS
+</p>
+
+</div>
+
+
+<div class="business-card">
+
+<h3>Airtel Telecom</h3>
+
+<p>
+Postpaid New Acquisition<br>
+Prepaid New Acquisition
+</p>
+
+</div>
+
+
+<div class="business-card">
+
+<h3>Airtel Broadband</h3>
+
+<p>
+Pan India Lead Generation<br>
+Delhi NCR Installation<br>
+Lead-to-Installation Tracking<br>
+Field Operations<br>
+Technical Coordination<br>
+Installation Closure
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= SKILLS ================= -->
+
+<section class="skills" id="skills">
+
+<div class="container">
+
+<div class="label">
+    Technical Skills
+</div>
+
+<h2 class="title">
+    My digital toolkit.
+</h2>
+
+<p class="description">
+    Strong working knowledge of Advanced Excel and Basic SQL,
+    with Power BI and Python currently being developed.
+</p>
+
+
+<div class="skills-list">
+
+<span class="skill">Advanced Excel</span>
+<span class="skill">Pivot Tables</span>
+<span class="skill">XLOOKUP</span>
+<span class="skill">VLOOKUP</span>
+<span class="skill">INDEX-MATCH</span>
+<span class="skill">SUMIFS</span>
+<span class="skill">COUNTIFS</span>
+<span class="skill">Power Query</span>
+<span class="skill">Excel Dashboards</span>
+<span class="skill">Basic SQL</span>
+<span class="skill">Joins</span>
+<span class="skill">CTEs</span>
+<span class="skill">CASE WHEN</span>
+<span class="skill">GROUP BY</span>
+<span class="skill">Aggregations</span>
+<span class="skill">PowerPoint</span>
+<span class="skill">Power BI — Learning</span>
+<span class="skill">Python — Learning</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= EDUCATION ================= -->
+
+<section class="education" id="education">
+
+<div class="container">
+
+<div class="label">
+    Education
+</div>
+
+<h2 class="title">
+    Academic foundation.
+</h2>
+
+
+<div class="edu-grid">
+
+<div class="edu">
+
+<div class="edu-year">
+    2022
+</div>
+
+<h3>
+    Bachelor of Arts
+</h3>
+
+<p>
+Dr. Ram Manohar Lohia Avadh University,
+Ayodhya
+</p>
+
+</div>
+
+
+<div class="edu">
+
+<div class="edu-year">
+    2017
+</div>
+
+<h3>
+    12th
+</h3>
+
+<p>
+UP Board
+</p>
+
+</div>
+
+
+<div class="edu">
+
+<div class="edu-year">
+    2015
+</div>
+
+<h3>
+    10th
+</h3>
+
+<p>
+UP Board
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= SUPPORT STYLE CONTACT ================= -->
+
+<section class="support">
+
+<div class="container">
+
+<div class="label">
+    Quick Connect
+</div>
+
+<h2 class="title">
+    Need to know more?
+</h2>
+
+<div class="support-box">
+
+<div class="support-card">
+
+<h3>Resume</h3>
+
+<p>
+Want to know more about my professional
+experience and responsibilities?
+</p>
+
+<a class="support-link" href="#experience">
+    View Experience →
+</a>
+
+</div>
+
+
+<div class="support-card">
+
+<h3>LinkedIn</h3>
+
+<p>
+Connect with me professionally and
+follow my career journey.
+</p>
+
+<a class="support-link"
+href="https://linkedin.com/in/Sheshram-prajapati"
+target="_blank">
+    Open LinkedIn →
+</a>
+
+</div>
+
+
+<div class="support-card">
+
+<h3>Let's Talk</h3>
+
+<p>
+Have an opportunity or business requirement?
+Let's connect directly.
+</p>
+
+<a class="support-link" href="#contact">
+    Contact Me →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section class="contact" id="contact">
+
+<div class="container contact-grid">
+
+<div>
+
+<div class="label">
+    Contact
+</div>
+
+<h2>
+    Let's connect<br>
+    and talk data.
+</h2>
+
+<p class="contact-text">
+    Open to opportunities in MIS, Data Analytics,
+    Workforce Management and Business Reporting.
+</p>
+
+</div>
+
+
+<div class="contact-card">
+
+<div class="contact-item">
+
+<small>Email</small>
+
+<a href="mailto:srp8046@gmail.com">
+    srp8046@gmail.com
+</a>
+
+</div>
+
+
+<div class="contact-item">
+
+<small>Phone</small>
+
+<a href="tel:+917565008895">
+    +91 7565008895
+</a>
+
+</div>
+
+
+<div class="contact-item">
+
+<small>Location</small>
+
+<strong>
+    Delhi, India
+</strong>
+
+</div>
+
+
+<div class="contact-item">
+
+<small>LinkedIn</small>
+
+<a href="https://linkedin.com/in/Sheshram-prajapati"
+target="_blank">
+    linkedin.com/in/Sheshram-prajapati →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<div class="container footer">
+
+<div>
+    <strong>Sheshram Prajapati</strong>
+</div>
+
+<div>
+    MIS Executive · Data Analysis · WFM
+</div>
+
+<div>
+    © 2026
+</div>
+
+</div>
+
+</footer>
+
+
+<script>
+
+/* Header shadow */
+
+window.addEventListener("scroll",function(){
+
+    const header=document.getElementById("header");
+
+    if(window.scrollY>20){
+        header.classList.add("scrolled");
+    }else{
+        header.classList.remove("scrolled");
+    }
+
+});
+
+
+/* Mobile menu */
+
+function toggleMenu(){
+
+    document
+    .getElementById("navLinks")
+    .classList
+    .toggle("active");
+
+}
+
+
+/* Close mobile menu */
+
+document.querySelectorAll(".nav-links a").forEach(function(link){
+
+    link.addEventListener("click",function(){
+
+        document
+        .getElementById("navLinks")
+        .classList
+        .remove("active");
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
