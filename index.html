@@ -4,25 +4,74 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sheshram Prajapati | MIS Executive</title>
+<title>Sheshram Prajapati | MIS Executive & Data Analytics</title>
+
+<meta name="description" content="Sheshram Prajapati — MIS Executive with 8+ years of experience in MIS reporting, data analysis, WFM, dashboards and telecom operations.">
+<meta name="author" content="Sheshram Prajapati">
+<meta name="theme-color" content="#e4002b">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
+/* =========================================================
+   DESIGN SYSTEM
+========================================================= */
+
 :root{
-    --purple:#5b2cff;
-    --purple2:#3514b8;
-    --pink:#e5007d;
-    --dark:#17132a;
-    --text:#262238;
-    --muted:#777286;
-    --light:#f6f4fb;
-    --white:#fff;
-    --border:#e8e4f0;
+    --red:#e4002b;
+    --red-light:#ff3155;
+    --red-dark:#a90020;
+
+    --black:#050505;
+    --dark:#080809;
+    --dark-2:#0d0d0f;
+    --card:#111114;
+    --card-2:#151519;
+
+    --white:#ffffff;
+    --text:#dedee3;
+    --muted:#94949c;
+    --muted-2:#686870;
+
+    --border:rgba(255,255,255,.09);
+    --border-red:rgba(228,0,43,.35);
+
+    --max:1240px;
+
+    --shadow:
+        0 25px 80px rgba(0,0,0,.45);
+
+    --transition:
+        .3s cubic-bezier(.2,.7,.2,1);
 }
+
+[data-theme="light"]{
+    --black:#f5f5f7;
+    --dark:#ffffff;
+    --dark-2:#f0f0f3;
+    --card:#ffffff;
+    --card-2:#f7f7f9;
+
+    --white:#111114;
+    --text:#242428;
+    --muted:#68686f;
+    --muted-2:#8b8b91;
+
+    --border:rgba(0,0,0,.09);
+    --border-red:rgba(228,0,43,.25);
+
+    --shadow:
+        0 25px 70px rgba(0,0,0,.10);
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
     margin:0;
@@ -32,152 +81,352 @@
 
 html{
     scroll-behavior:smooth;
+    scroll-padding-top:90px;
 }
 
 body{
-    font-family:Inter,Arial,sans-serif;
-    color:var(--text);
-    background:#fff;
+    background:var(--black);
+    color:var(--white);
+    font-family:Inter,sans-serif;
     overflow-x:hidden;
+    transition:
+        background .35s ease,
+        color .35s ease;
+}
+
+body.menu-open{
+    overflow:hidden;
 }
 
 a{
-    text-decoration:none;
     color:inherit;
+    text-decoration:none;
+}
+
+button{
+    font:inherit;
+}
+
+img{
+    max-width:100%;
+    display:block;
 }
 
 .container{
-    width:min(1200px,92%);
+    width:min(var(--max),calc(100% - 56px));
     margin:auto;
 }
 
-/* ================= HEADER ================= */
+section{
+    padding:115px 0;
+    position:relative;
+}
 
-.header{
+::selection{
+    background:var(--red);
+    color:#fff;
+}
+
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.grid-bg{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-5;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
+
+    background-size:70px 70px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 90%
+        );
+}
+
+[data-theme="light"] .grid-bg{
+    opacity:.4;
+}
+
+.noise{
+    position:fixed;
+    inset:0;
+    z-index:-4;
+    pointer-events:none;
+    opacity:.025;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+}
+
+.cursor-glow{
+    position:fixed;
+    width:280px;
+    height:280px;
+    border-radius:50%;
+    background:var(--red);
+    filter:blur(100px);
+    opacity:.07;
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    z-index:-2;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar{
     position:fixed;
     top:0;
     left:0;
     width:100%;
-    height:74px;
-    background:#fff;
+    height:78px;
     z-index:1000;
-    transition:.3s;
+
+    background:rgba(5,5,5,.72);
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+
+    border-bottom:1px solid var(--border);
 }
 
-.header.scrolled{
-    box-shadow:0 4px 25px rgba(50,30,80,.1);
+[data-theme="light"] .navbar{
+    background:rgba(245,245,247,.78);
 }
 
-.nav{
+.nav-inner{
     height:100%;
+    width:min(var(--max),calc(100% - 56px));
+    margin:auto;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
 }
 
 .logo{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    font-size:24px;
-    font-weight:900;
-    color:var(--purple);
+    font-family:"Space Grotesk",sans-serif;
+    font-size:22px;
+    font-weight:700;
+    letter-spacing:-.7px;
 }
 
-.logo-symbol{
-    width:40px;
-    height:40px;
-    border-radius:50%;
-    background:linear-gradient(135deg,var(--purple),var(--pink));
+.logo span{
+    color:var(--red);
+}
+
+.nav-right{
     display:flex;
     align-items:center;
-    justify-content:center;
-    color:#fff;
-    font-size:13px;
-    font-weight:900;
+    gap:22px;
 }
 
 .nav-links{
     display:flex;
     align-items:center;
     gap:28px;
+    list-style:none;
 }
 
 .nav-links a{
-    font-size:13px;
+    position:relative;
+    color:var(--muted);
+    font-size:12px;
     font-weight:600;
-    color:#393346;
+    transition:var(--transition);
 }
 
-.nav-links a:hover{
-    color:var(--purple);
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-9px;
+    width:0;
+    height:2px;
+    border-radius:10px;
+    background:var(--red);
+    transition:var(--transition);
 }
 
-.nav-cta{
-    background:var(--purple);
+.nav-links a:hover,
+.nav-links a.active{
+    color:var(--white);
+}
+
+.nav-links a.active::after,
+.nav-links a:hover::after{
+    width:100%;
+}
+
+.resume-nav{
+    background:var(--red);
     color:#fff!important;
-    padding:12px 22px;
-    border-radius:25px;
+    padding:11px 18px;
+    border-radius:30px;
+}
+
+.resume-nav::after{
+    display:none;
+}
+
+.resume-nav:hover{
+    background:var(--red-light);
+    transform:translateY(-2px);
+}
+
+.theme-toggle{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    border:1px solid var(--border);
+    background:var(--card);
+    color:var(--white);
+    cursor:pointer;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    transition:var(--transition);
+}
+
+.theme-toggle:hover{
+    border-color:var(--border-red);
+    transform:rotate(15deg);
 }
 
 .menu{
     display:none;
-    font-size:28px;
+    width:42px;
+    height:42px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:var(--card);
+    color:var(--white);
     cursor:pointer;
 }
 
-/* ================= HERO ================= */
+
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero{
-    margin-top:74px;
-    min-height:620px;
-    background:
-        radial-gradient(circle at 85% 20%,rgba(229,0,125,.15),transparent 25%),
-        radial-gradient(circle at 20% 80%,rgba(91,44,255,.13),transparent 30%),
-        linear-gradient(135deg,#f7f3ff,#fff 50%,#fff4fb);
-    position:relative;
+    min-height:100vh;
+    padding-top:155px;
+    display:flex;
+    align-items:center;
     overflow:hidden;
 }
 
-.hero-grid{
-    min-height:620px;
-    display:grid;
-    grid-template-columns:1.1fr .9fr;
-    gap:60px;
-    align-items:center;
+.hero-orb{
+    position:absolute;
+    width:650px;
+    height:650px;
+    right:-300px;
+    top:40px;
+
+    border-radius:50%;
+    background:var(--red);
+    opacity:.13;
+    filter:blur(150px);
 }
 
-.hero-label{
-    display:inline-flex;
-    padding:9px 15px;
-    border-radius:30px;
-    background:#eee9ff;
-    color:var(--purple);
+.hero-orb-2{
+    position:absolute;
+    width:280px;
+    height:280px;
+    left:-160px;
+    bottom:-100px;
+
+    border-radius:50%;
+    background:#b00022;
+    opacity:.08;
+    filter:blur(100px);
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.08fr .92fr;
+    align-items:center;
+    gap:70px;
+    position:relative;
+    z-index:2;
+}
+
+.availability{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    color:#ff5875;
     font-size:11px;
-    font-weight:900;
-    letter-spacing:1.5px;
-    margin-bottom:22px;
+    font-weight:800;
+    letter-spacing:2px;
+    text-transform:uppercase;
+
+    margin-bottom:25px;
+}
+
+.availability-dot{
+    width:8px;
+    height:8px;
+    background:#2ee66d;
+    border-radius:50%;
+    box-shadow:0 0 18px #2ee66d;
+    animation:pulse 1.8s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{
+        transform:scale(1);
+        opacity:1;
+    }
+    50%{
+        transform:scale(1.35);
+        opacity:.55;
+    }
 }
 
 .hero h1{
-    font-size:clamp(46px,6vw,76px);
-    line-height:1;
-    letter-spacing:-4px;
-    color:var(--dark);
+    font-family:"Space Grotesk",sans-serif;
+    font-size:clamp(58px,7vw,96px);
+    line-height:.91;
+    letter-spacing:-5px;
+    margin-bottom:28px;
 }
 
-.hero h1 span{
-    background:linear-gradient(90deg,var(--purple),var(--pink));
-    -webkit-background-clip:text;
-    color:transparent;
+.hero h1 .red{
+    color:var(--red);
 }
 
-.hero-text{
-    max-width:650px;
-    margin:24px 0 30px;
-    color:#676174;
-    line-height:1.75;
-    font-size:17px;
+.hero-role{
+    font-size:19px;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.hero-description{
+    max-width:680px;
+    color:var(--muted);
+    font-size:15px;
+    line-height:1.9;
+    margin-bottom:34px;
 }
 
 .hero-buttons{
@@ -187,758 +436,1171 @@ a{
 }
 
 .btn{
-    padding:15px 23px;
-    border-radius:30px;
-    font-size:13px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+
+    padding:14px 22px;
+    border-radius:40px;
+
+    font-size:12px;
     font-weight:800;
-    transition:.25s;
-    display:inline-block;
+
+    transition:var(--transition);
 }
 
-.btn-primary{
+.btn-red{
+    background:var(--red);
     color:#fff;
-    background:linear-gradient(100deg,var(--purple),var(--pink));
-    box-shadow:0 12px 28px rgba(91,44,255,.22);
 }
 
-.btn-light{
-    background:#fff;
+.btn-red:hover{
+    background:var(--red-light);
+    transform:translateY(-4px);
+    box-shadow:0 18px 40px rgba(228,0,43,.25);
+}
+
+.btn-outline{
     border:1px solid var(--border);
+    background:var(--card);
+    color:var(--white);
 }
 
-.btn:hover{
-    transform:translateY(-3px);
+.btn-outline:hover{
+    border-color:var(--border-red);
+    transform:translateY(-4px);
 }
 
-/* HERO PROFILE */
 
-.hero-visual{
+/* =========================================================
+   HERO PHOTO
+========================================================= */
+
+.profile{
+    display:flex;
+    align-items:center;
+    justify-content:center;
     position:relative;
-    min-height:460px;
+}
+
+.profile-glow{
+    position:absolute;
+    width:390px;
+    height:390px;
+
+    border-radius:50%;
+    background:var(--red);
+    filter:blur(100px);
+    opacity:.15;
+}
+
+.profile-ring{
+    width:410px;
+    height:410px;
+    padding:8px;
+
+    border-radius:50%;
+
+    background:
+        conic-gradient(
+            from 20deg,
+            var(--red),
+            transparent 30%,
+            transparent 65%,
+            var(--red-dark),
+            var(--red)
+        );
+
+    position:relative;
+    z-index:2;
+
+    animation:float 6s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+.profile-image{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+    border-radius:50%;
+    border:9px solid var(--black);
+
+    background:#151518;
 }
 
 .profile-card{
     position:absolute;
-    right:20px;
-    top:20px;
-    width:360px;
-    min-height:420px;
-    border-radius:38px;
-    background:linear-gradient(145deg,#4b21d4,#7929a9);
-    color:#fff;
-    padding:32px;
-    overflow:hidden;
-    box-shadow:0 30px 70px rgba(70,35,150,.22);
+    left:0;
+    bottom:10px;
+    z-index:5;
+
+    padding:17px 20px;
+
+    border-radius:18px;
+    background:rgba(17,17,20,.92);
+    backdrop-filter:blur(20px);
+
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
 }
 
-.profile-card:before{
-    content:"";
-    position:absolute;
-    width:320px;
-    height:320px;
-    border-radius:50%;
-    background:rgba(255,255,255,.1);
-    right:-120px;
-    top:-120px;
+[data-theme="light"] .profile-card{
+    background:rgba(255,255,255,.92);
 }
 
-.profile-card:after{
-    content:"MIS";
-    position:absolute;
-    right:15px;
-    bottom:-20px;
-    font-size:100px;
-    font-weight:900;
-    color:rgba(255,255,255,.08);
-}
+.profile-card strong{
+    display:block;
 
-.profile-content{
-    position:absolute;
-    bottom:30px;
-    left:32px;
-    z-index:2;
-}
-
-.profile-placeholder,
-.profile-photo{
-    width:110px;
-    height:110px;
-    border-radius:50%;
-    border:4px solid #fff;
-    object-fit:cover;
-    margin-bottom:20px;
-}
-
-.profile-placeholder{
-    background:#fff;
-    color:var(--purple);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:30px;
-    font-weight:900;
-}
-
-.profile-content h2{
+    color:var(--red);
+    font-family:"Space Grotesk",sans-serif;
     font-size:25px;
 }
 
-.profile-content p{
-    color:#e9ddff;
-    font-size:13px;
-    margin-top:5px;
-}
-
-/* FLOATING CARD */
-
-.float-card{
-    position:absolute;
-    left:0;
-    bottom:25px;
-    width:220px;
-    padding:20px;
-    border-radius:22px;
-    background:#fff;
-    box-shadow:0 20px 50px rgba(40,20,80,.14);
-    z-index:4;
-}
-
-.float-card small{
-    color:#999;
+.profile-card small{
+    color:var(--muted);
     font-size:10px;
-    text-transform:uppercase;
-    letter-spacing:1px;
 }
 
-.float-card strong{
-    display:block;
-    font-size:30px;
-    color:var(--purple);
-    margin-top:5px;
-}
 
-.float-card span{
-    font-size:12px;
-    color:#777;
-}
-
-/* ================= STATS ================= */
+/* =========================================================
+   STATS
+========================================================= */
 
 .stats{
-    background:#17132a;
-    color:#fff;
+    padding-top:20px;
+    padding-bottom:110px;
 }
 
 .stats-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
+
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
 }
 
 .stat{
-    text-align:center;
-    padding:35px 15px;
-    border-right:1px solid #302b42;
+    padding:32px 25px;
+    border-right:1px solid var(--border);
 }
 
 .stat:last-child{
-    border:none;
+    border-right:none;
 }
 
-.stat h2{
-    font-size:38px;
+.stat-number{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:45px;
+    font-weight:700;
+    letter-spacing:-2px;
+}
+
+.stat-number span{
+    color:var(--red);
 }
 
 .stat p{
-    color:#a7a1b5;
-    font-size:12px;
-    margin-top:3px;
-}
-
-/* ================= COMMON ================= */
-
-section{
-    padding:100px 0;
-}
-
-.label{
-    color:var(--purple);
-    text-transform:uppercase;
-    letter-spacing:2px;
+    color:var(--muted);
     font-size:11px;
-    font-weight:900;
-    margin-bottom:12px;
+    margin-top:5px;
 }
 
-.title{
-    font-size:50px;
-    line-height:1.05;
-    letter-spacing:-2.5px;
+
+/* =========================================================
+   SECTION HEADINGS
+========================================================= */
+
+.section-label{
+    color:var(--red);
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:14px;
 }
 
-.description{
+.section-title{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:clamp(45px,5vw,70px);
+    line-height:.98;
+    letter-spacing:-3px;
+}
+
+.section-subtitle{
     max-width:680px;
     color:var(--muted);
-    margin-top:15px;
-    line-height:1.7;
+    line-height:1.8;
+    margin-top:18px;
 }
 
-/* ================= ABOUT ================= */
+
+/* =========================================================
+   ABOUT
+========================================================= */
 
 .about{
-    background:var(--light);
+    background:var(--dark);
 }
 
 .about-grid{
     display:grid;
-    grid-template-columns:.8fr 1.2fr;
-    gap:75px;
-    align-items:center;
+    grid-template-columns:.75fr 1.25fr;
+    gap:85px;
+    margin-top:60px;
 }
 
-.about-number{
-    font-size:190px;
-    font-weight:900;
-    color:var(--purple);
-    line-height:.75;
-    letter-spacing:-12px;
+.about-big{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:42px;
+    line-height:1.1;
+    letter-spacing:-2px;
 }
 
-.about-copy p{
-    color:#625d6e;
-    line-height:1.8;
+.about-big span{
+    color:var(--red);
+}
+
+.about-text p{
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.9;
     margin-bottom:18px;
 }
 
-.pills{
-    display:flex;
-    flex-wrap:wrap;
-    gap:9px;
-    margin-top:25px;
-}
-
-.pill{
-    background:#fff;
-    border:1px solid var(--border);
-    padding:9px 14px;
-    border-radius:25px;
-    font-size:11px;
-    font-weight:700;
-}
-
-/* ================= SERVICE TILES ================= */
-
-.services{
-    background:#fff;
-}
-
-.service-grid{
+.about-points{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-    margin-top:48px;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:30px;
 }
 
-.service{
-    min-height:230px;
-    border-radius:28px;
-    padding:30px;
-    background:#fff;
+.about-point{
+    padding:19px;
+
+    background:var(--card);
     border:1px solid var(--border);
-    transition:.3s;
-    position:relative;
-    overflow:hidden;
+    border-radius:17px;
+
+    transition:var(--transition);
 }
 
-.service:hover{
-    transform:translateY(-7px);
-    box-shadow:0 20px 45px rgba(55,30,100,.1);
+.about-point:hover{
+    transform:translateY(-4px);
+    border-color:var(--border-red);
 }
 
-.service-icon{
-    width:50px;
-    height:50px;
-    border-radius:16px;
-    background:#eee9ff;
-    color:var(--purple);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:900;
-    margin-bottom:20px;
-}
-
-.service h3{
-    font-size:19px;
-    margin-bottom:10px;
-}
-
-.service p{
-    color:#777080;
+.about-point strong{
+    display:block;
     font-size:13px;
-    line-height:1.7;
+    margin-bottom:6px;
 }
 
-/* ================= EXPERIENCE ================= */
-
-.experience{
-    background:var(--light);
+.about-point span{
+    color:var(--muted);
+    font-size:10px;
 }
 
-.timeline{
-    margin-top:50px;
-    position:relative;
-    max-width:1000px;
+
+/* =========================================================
+   EXPERIENCE
+========================================================= */
+
+.experience-list{
+    margin-top:60px;
+    display:grid;
+    gap:15px;
 }
 
-.timeline:before{
-    content:"";
-    position:absolute;
-    left:8px;
-    top:0;
-    bottom:0;
-    width:2px;
-    background:#ded9e8;
+.experience-card{
+    display:grid;
+    grid-template-columns:190px 1fr;
+    gap:40px;
+
+    padding:34px;
+
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:23px;
+
+    transition:var(--transition);
 }
 
-.job{
-    position:relative;
-    padding-left:48px;
-    margin-bottom:60px;
+.experience-card:hover{
+    transform:translateX(7px);
+    border-color:var(--border-red);
+    box-shadow:var(--shadow);
 }
 
-.job:before{
-    content:"";
-    position:absolute;
-    left:0;
-    top:5px;
-    width:17px;
-    height:17px;
-    background:linear-gradient(135deg,var(--purple),var(--pink));
-    border-radius:50%;
-    border:4px solid var(--light);
-}
-
-.job-date{
+.experience-date{
+    color:var(--red);
     font-size:11px;
-    font-weight:900;
-    color:var(--purple);
-    letter-spacing:1px;
+    font-weight:800;
+    letter-spacing:.5px;
+    padding-top:5px;
 }
 
-.job h3{
-    font-size:26px;
-    margin:6px 0 4px;
+.experience-card h3{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:24px;
+    margin-bottom:5px;
 }
 
 .company{
+    color:var(--muted);
+    font-size:12px;
+    margin-bottom:17px;
+}
+
+.experience-card p{
+    color:var(--muted);
     font-size:13px;
-    color:#817b8c;
-    font-weight:700;
-    margin-bottom:14px;
-}
-
-.job p{
-    color:#686273;
     line-height:1.8;
-    font-size:14px;
 }
 
-/* ================= BUSINESS ================= */
 
-.business-grid{
+/* =========================================================
+   DOMAINS
+========================================================= */
+
+.exposure{
+    background:var(--dark);
+}
+
+.exposure-grid{
+    margin-top:60px;
+
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:18px;
-    margin-top:45px;
+    gap:15px;
 }
 
-.business-card{
-    min-height:270px;
-    border-radius:30px;
-    padding:32px;
-    color:#fff;
-    position:relative;
-    overflow:hidden;
-    background:linear-gradient(135deg,#24144f,#5b2cff);
+.exposure-card{
+    min-height:250px;
+    padding:30px;
+
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:22px;
+
+    transition:var(--transition);
 }
 
-.business-card:nth-child(2){
-    background:linear-gradient(135deg,#7d1467,#e5007d);
+.exposure-card:hover{
+    transform:translateY(-8px);
+    border-color:var(--border-red);
+    box-shadow:var(--shadow);
 }
 
-.business-card:nth-child(3){
-    background:linear-gradient(135deg,#311d78,#24144f);
-}
-
-.business-card:after{
-    content:"";
-    width:180px;
-    height:180px;
-    border-radius:50%;
-    background:rgba(255,255,255,.08);
-    position:absolute;
-    right:-80px;
-    bottom:-80px;
-}
-
-.business-card h3{
-    font-size:25px;
-    margin-bottom:18px;
-}
-
-.business-card p{
-    color:#eee7ff;
-    line-height:2;
+.exposure-number{
+    color:var(--red);
+    font-family:"Space Grotesk",sans-serif;
     font-size:13px;
+    margin-bottom:55px;
 }
 
-/* ================= SKILLS ================= */
-
-.skills{
-    background:#17132a;
-    color:#fff;
+.exposure-card h3{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:24px;
+    margin-bottom:12px;
 }
 
-.skills .description{
-    color:#aaa4b7;
+.exposure-card p{
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.75;
 }
 
-.skills-list{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:45px;
+
+/* =========================================================
+   SKILLS
+========================================================= */
+
+.skills-grid{
+    margin-top:60px;
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:13px;
 }
 
 .skill{
-    padding:14px 18px;
-    border:1px solid #393249;
-    border-radius:30px;
-    font-size:12px;
-    font-weight:600;
-    transition:.25s;
+    padding:22px;
+
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:17px;
+
+    transition:var(--transition);
 }
 
 .skill:hover{
-    background:linear-gradient(100deg,var(--purple),var(--pink));
-    border-color:transparent;
+    border-color:var(--border-red);
+    transform:translateY(-3px);
 }
 
-/* ================= EDUCATION ================= */
-
-.education{
-    background:var(--light);
+.skill-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:13px;
 }
 
-.edu-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-    margin-top:45px;
-}
-
-.edu{
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:25px;
-    padding:30px;
-}
-
-.edu-year{
-    color:var(--purple);
-    font-size:12px;
-    font-weight:900;
-}
-
-.edu h3{
-    margin:10px 0;
-}
-
-.edu p{
-    color:#777080;
+.skill-name{
     font-size:13px;
+    font-weight:700;
 }
 
-/* ================= SUPPORT ================= */
-
-.support{
-    background:#fff;
+.skill-level{
+    color:var(--red);
+    font-size:9px;
+    font-weight:800;
+    text-transform:uppercase;
 }
 
-.support-box{
-    margin-top:45px;
+.skill-track{
+    height:5px;
+    width:100%;
+
+    border-radius:20px;
+    background:rgba(255,255,255,.07);
+    overflow:hidden;
+}
+
+[data-theme="light"] .skill-track{
+    background:rgba(0,0,0,.07);
+}
+
+.skill-bar{
+    height:100%;
+    width:0;
+
+    border-radius:20px;
+    background:linear-gradient(
+        90deg,
+        var(--red-dark),
+        var(--red),
+        var(--red-light)
+    );
+
+    transition:width 1.3s cubic-bezier(.2,.7,.2,1);
+}
+
+
+/* =========================================================
+   PROJECTS
+========================================================= */
+
+.projects{
+    background:var(--dark);
+}
+
+.project-grid{
+    margin-top:60px;
+
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
 }
 
-.support-card{
-    padding:28px;
-    border-radius:24px;
-    background:#f8f6fc;
+.project{
+    min-height:330px;
+    padding:32px;
+
+    background:var(--card);
     border:1px solid var(--border);
+    border-radius:23px;
+
+    cursor:pointer;
+
+    transition:var(--transition);
 }
 
-.support-card h3{
+.project:hover{
+    transform:translateY(-8px);
+    border-color:var(--border-red);
+    box-shadow:var(--shadow);
+}
+
+.project-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:80px;
+}
+
+.project-tag{
+    padding:7px 12px;
+    border-radius:20px;
+
+    color:#ff5472;
+    background:rgba(228,0,43,.09);
+
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.project-arrow{
+    color:var(--red);
+    font-size:22px;
+
+    transition:var(--transition);
+}
+
+.project:hover .project-arrow{
+    transform:translate(5px,-5px);
+}
+
+.project h3{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:26px;
+    margin-bottom:12px;
+}
+
+.project p{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.75;
+}
+
+.project-view{
+    display:inline-block;
+    margin-top:20px;
+
+    color:var(--red);
+    font-size:11px;
+    font-weight:800;
+}
+
+
+/* =========================================================
+   EDUCATION
+========================================================= */
+
+.education-card{
+    margin-top:60px;
+    padding:35px;
+
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:23px;
+}
+
+.education-card h3{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:25px;
+    margin-bottom:7px;
+}
+
+.education-card p{
+    color:var(--muted);
+    font-size:13px;
     margin-bottom:8px;
 }
 
-.support-card p{
-    color:#777080;
-    font-size:13px;
-    line-height:1.6;
-}
 
-.support-link{
-    display:inline-block;
-    color:var(--purple);
-    font-weight:800;
-    font-size:12px;
-    margin-top:15px;
-}
-
-/* ================= CONTACT ================= */
+/* =========================================================
+   CONTACT
+========================================================= */
 
 .contact{
-    background:linear-gradient(125deg,#32129e,#74115f);
-    color:#fff;
+    padding-bottom:90px;
 }
 
-.contact-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:70px;
-    align-items:center;
-}
+.contact-box{
+    position:relative;
+    overflow:hidden;
 
-.contact .label{
-    color:#e2caff;
-}
+    padding:65px;
 
-.contact h2{
-    font-size:62px;
-    line-height:1;
-    letter-spacing:-3px;
-}
-
-.contact-text{
-    color:#e8ddf2;
-    margin-top:20px;
-    max-width:550px;
-    line-height:1.7;
-}
-
-.contact-card{
-    background:#fff;
-    color:#222;
     border-radius:30px;
-    padding:34px;
+
+    background:
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(228,0,43,.17),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #180006,
+            var(--card) 55%,
+            #140005
+        );
+
+    border:1px solid var(--border-red);
+}
+
+.contact-box::after{
+    content:"";
+    position:absolute;
+
+    width:400px;
+    height:400px;
+
+    right:-250px;
+    bottom:-250px;
+
+    border-radius:50%;
+    background:var(--red);
+    opacity:.07;
+    filter:blur(70px);
+}
+
+.contact-box h2{
+    position:relative;
+    z-index:2;
+
+    font-family:"Space Grotesk",sans-serif;
+    font-size:clamp(43px,6vw,76px);
+    line-height:.98;
+    letter-spacing:-3px;
+
+    max-width:850px;
+    margin-bottom:20px;
+}
+
+.contact-box h2 span{
+    color:var(--red);
+}
+
+.contact-box > p{
+    position:relative;
+    z-index:2;
+
+    color:#a3a3a8;
+    max-width:620px;
+    line-height:1.8;
+    margin-bottom:35px;
+}
+
+.contact-details{
+    position:relative;
+    z-index:2;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+
+    margin-bottom:30px;
 }
 
 .contact-item{
-    padding:17px 0;
-    border-bottom:1px solid #eee;
+    padding:22px;
+
+    background:rgba(0,0,0,.25);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:17px;
 }
 
-.contact-item:last-child{
-    border:none;
+.contact-icon{
+    width:38px;
+    height:38px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+    background:rgba(228,0,43,.12);
+    color:var(--red);
+
+    font-size:16px;
+    margin-bottom:14px;
 }
 
 .contact-item small{
     display:block;
-    color:#999;
-    font-size:10px;
+
+    color:#777;
+    font-size:9px;
     text-transform:uppercase;
     letter-spacing:1px;
-    margin-bottom:5px;
+
+    margin-bottom:6px;
 }
 
-.contact-item a{
-    font-weight:800;
+.contact-item strong{
+    display:block;
+    color:#fff;
+    font-size:12px;
+    word-break:break-word;
 }
 
-/* ================= FOOTER ================= */
+.contact-actions{
+    position:relative;
+    z-index:2;
+
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer{
-    background:#110d1c;
-    color:#898393;
-    padding:28px 0;
-}
+    width:min(var(--max),calc(100% - 56px));
+    margin:auto;
 
-.footer{
+    padding:30px 0 40px;
+
+    border-top:1px solid var(--border);
+
     display:flex;
+    align-items:center;
     justify-content:space-between;
-    flex-wrap:wrap;
-    gap:15px;
+
+    color:var(--muted-2);
+    font-size:10px;
 }
 
-.footer strong{
-    color:#fff;
+footer strong{
+    color:var(--white);
 }
 
-/* ================= MOBILE ================= */
 
-@media(max-width:900px){
+/* =========================================================
+   REVEAL ANIMATION
+========================================================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(28px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:2000;
+
+    display:none;
+    align-items:center;
+    justify-content:center;
+
+    padding:25px;
+
+    background:rgba(0,0,0,.72);
+    backdrop-filter:blur(15px);
+}
+
+.modal.active{
+    display:flex;
+}
+
+.modal-box{
+    width:min(720px,100%);
+    max-height:90vh;
+    overflow:auto;
+
+    padding:38px;
+
+    background:var(--card);
+    border:1px solid var(--border-red);
+    border-radius:25px;
+
+    box-shadow:0 30px 100px rgba(0,0,0,.5);
+
+    animation:modalIn .35s ease;
+}
+
+@keyframes modalIn{
+    from{
+        opacity:0;
+        transform:translateY(20px) scale(.97);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+.modal-close{
+    float:right;
+
+    width:38px;
+    height:38px;
+
+    border:1px solid var(--border);
+    border-radius:50%;
+
+    background:var(--card-2);
+    color:var(--white);
+
+    cursor:pointer;
+}
+
+.modal-tag{
+    display:inline-block;
+
+    color:var(--red);
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:1.5px;
+
+    margin-bottom:15px;
+}
+
+.modal-box h2{
+    font-family:"Space Grotesk",sans-serif;
+    font-size:35px;
+    letter-spacing:-1.5px;
+    margin-bottom:16px;
+}
+
+.modal-box p{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.8;
+    margin-bottom:20px;
+}
+
+.modal-list{
+    display:grid;
+    gap:10px;
+}
+
+.modal-list div{
+    padding:14px;
+
+    background:var(--card-2);
+    border:1px solid var(--border);
+    border-radius:12px;
+
+    color:var(--muted);
+    font-size:12px;
+}
+
+.modal-list strong{
+    color:var(--white);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:950px){
 
     .nav-links{
         display:none;
+
         position:absolute;
-        top:74px;
-        left:0;
-        width:100%;
-        background:#fff;
-        flex-direction:column;
+        top:88px;
+        left:20px;
+        right:20px;
+
         padding:25px;
-        gap:20px;
-        box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+        flex-direction:column;
+        align-items:flex-start;
+
+        background:var(--card);
+        border:1px solid var(--border);
+        border-radius:20px;
+
+        box-shadow:var(--shadow);
     }
 
     .nav-links.active{
         display:flex;
     }
 
+    .nav-right{
+        gap:8px;
+    }
+
     .menu{
-        display:block;
+        display:flex;
+        align-items:center;
+        justify-content:center;
     }
 
-    .hero{
-        padding:70px 0;
-    }
-
-    .hero-grid,
-    .about-grid,
-    .contact-grid{
+    .hero-grid{
         grid-template-columns:1fr;
+        text-align:center;
     }
 
-    .hero-visual{
-        min-height:470px;
+    .availability{
+        justify-content:center;
     }
 
-    .profile-card{
-        right:0;
-        width:100%;
-        max-width:360px;
+    .hero-description{
+        margin-left:auto;
+        margin-right:auto;
     }
 
-    .service-grid,
-    .business-grid,
-    .edu-grid,
-    .support-box{
-        grid-template-columns:1fr;
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .profile{
+        margin-top:25px;
     }
 
     .stats-grid{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:1fr 1fr;
     }
 
     .stat:nth-child(2){
         border-right:none;
     }
 
-    .title{
-        font-size:40px;
+    .stat:nth-child(3),
+    .stat:nth-child(4){
+        border-top:1px solid var(--border);
     }
 
-    .about-number{
-        font-size:130px;
+    .about-grid{
+        grid-template-columns:1fr;
+        gap:35px;
     }
 
-    .contact h2{
-        font-size:50px;
+    .exposure-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .contact-details{
+        grid-template-columns:1fr;
     }
 }
 
-@media(max-width:500px){
+
+@media(max-width:650px){
+
+    .container{
+        width:min(var(--max),calc(100% - 40px));
+    }
 
     section{
-        padding:75px 0;
+        padding:85px 0;
+    }
+
+    .hero{
+        padding-top:125px;
     }
 
     .hero h1{
+        font-size:52px;
+        letter-spacing:-3px;
+    }
+
+    .hero-role{
+        font-size:16px;
+    }
+
+    .hero-description{
+        font-size:13px;
+    }
+
+    .profile-ring{
+        width:290px;
+        height:290px;
+    }
+
+    .profile-card{
+        left:50%;
+        transform:translateX(-50%);
+        bottom:-25px;
+        white-space:nowrap;
+    }
+
+    .stats-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .stat{
+        padding:24px 14px;
+    }
+
+    .stat-number{
+        font-size:31px;
+    }
+
+    .about-points,
+    .exposure-grid,
+    .skills-grid,
+    .project-grid{
+        grid-template-columns:1fr;
+    }
+
+    .about-big{
+        font-size:34px;
+    }
+
+    .experience-card{
+        grid-template-columns:1fr;
+        gap:12px;
+        padding:25px;
+    }
+
+    .project{
+        min-height:280px;
+    }
+
+    .contact-box{
+        padding:40px 24px;
+    }
+
+    .contact-box h2{
         font-size:45px;
         letter-spacing:-2px;
     }
 
-    .hero-text{
-        font-size:15px;
-    }
+    footer{
+        width:min(var(--max),calc(100% - 40px));
 
-    .float-card{
-        left:0;
-        bottom:5px;
-        width:190px;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:9px;
     }
-
 }
 
 </style>
 </head>
 
+
 <body>
 
-<!-- ================= HEADER ================= -->
+<div class="grid-bg"></div>
+<div class="noise"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
 
-<header class="header" id="header">
 
-<div class="container nav">
+<!-- =======================================================
+     NAVBAR
+======================================================= -->
+
+<header class="navbar">
+
+<div class="nav-inner">
 
 <a href="#home" class="logo">
-    <div class="logo-symbol">SP</div>
-    Sheshram
+SHESHRAM<span>.</span>
 </a>
 
-<nav class="nav-links" id="navLinks">
+<div class="nav-right">
 
+<ul class="nav-links" id="navLinks">
+
+<li>
 <a href="#about">About</a>
-<a href="#services">Expertise</a>
+</li>
+
+<li>
 <a href="#experience">Experience</a>
-<a href="#business">Business</a>
+</li>
+
+<li>
 <a href="#skills">Skills</a>
-<a href="#education">Education</a>
-<a href="#contact" class="nav-cta">Let's Talk</a>
+</li>
 
-</nav>
+<li>
+<a href="#projects">Projects</a>
+</li>
 
-<div class="menu" onclick="toggleMenu()">☰</div>
+<li>
+<a href="#contact">Contact</a>
+</li>
+
+<li>
+<a href="resume.pdf" target="_blank" class="resume-nav">
+Resume ↗
+</a>
+</li>
+
+</ul>
+
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+☾
+</button>
+
+<button class="menu" id="menu" aria-label="Open menu">
+☰
+</button>
+
+</div>
 
 </div>
 
 </header>
 
 
-<!-- ================= HERO ================= -->
+<main>
+
+
+<!-- =======================================================
+     HERO
+======================================================= -->
 
 <section class="hero" id="home">
 
-<div class="container hero-grid">
+<div class="hero-orb"></div>
+<div class="hero-orb-2"></div>
 
-<div>
+<div class="container">
 
-<div class="hero-label">
-    MIS • DATA • WFM • REPORTING
+<div class="hero-grid">
+
+<div class="reveal">
+
+<div class="availability">
+<span class="availability-dot"></span>
+Open to opportunities · Delhi NCR
 </div>
 
 <h1>
-    More than<br>
-    reports.<br>
-    <span>Real insights.</span>
+Turning
+<span class="red">data</span>
+into
+<span class="red">decisions.</span>
 </h1>
 
-<p class="hero-text">
-    MIS Executive with 8+ years of experience in MIS reporting,
-    data analysis, workforce management, performance tracking
-    and business reporting across BPO and Telecom operations.
+<div class="hero-role">
+MIS Executive · Data Analytics · WFM
+</div>
+
+<p class="hero-description">
+MIS professional with 8+ years of experience in MIS reporting,
+data analysis, workforce management, KPI tracking and business
+reporting across BPO and Telecom operations.
 </p>
 
 <div class="hero-buttons">
 
-<a href="#experience" class="btn btn-primary">
-    Explore My Experience →
+<a href="#experience" class="btn btn-red">
+Explore Experience →
 </a>
 
-<a href="#contact" class="btn btn-light">
-    Contact Me
+<a href="#contact" class="btn btn-outline">
+Let's Connect
 </a>
 
 </div>
@@ -946,46 +1608,26 @@ footer{
 </div>
 
 
-<div class="hero-visual">
+<div class="profile reveal">
+
+<div class="profile-glow"></div>
+
+<div class="profile-ring">
+
+<img
+src="profile.jpg"
+class="profile-image"
+alt="Sheshram Prajapati"
+>
+
+</div>
 
 <div class="profile-card">
 
-<div class="profile-content">
-
-<!--
-PHOTO:
-Put profile.jpg beside index.html.
-Replace the div below with:
-
-<img src="profile.jpg"
-     class="profile-photo"
-     alt="Sheshram Prajapati">
--->
-
-<div class="profile-placeholder">
-    SP
-</div>
-
-<h2>
-    Sheshram Prajapati
-</h2>
-
-<p>
-    MIS Executive | Data Analysis | WFM
-</p>
+<strong>8+ Years</strong>
+<small>MIS & Reporting Experience</small>
 
 </div>
-
-</div>
-
-
-<div class="float-card">
-
-<small>Experience</small>
-
-<strong>8+</strong>
-
-<span>Years in MIS & Operations</span>
 
 </div>
 
@@ -996,314 +1638,250 @@ Replace the div below with:
 </section>
 
 
-<!-- ================= STATS ================= -->
+<!-- =======================================================
+     STATS
+======================================================= -->
 
-<div class="stats">
+<section class="stats">
 
-<div class="container stats-grid">
+<div class="container">
 
-<div class="stat">
-    <h2>8+</h2>
-    <p>Years Experience</p>
+<div class="stats-grid">
+
+<div class="stat reveal">
+
+<div class="stat-number">
+<span class="counter" data-target="8">0</span><span>+</span>
 </div>
 
-<div class="stat">
-    <h2>5</h2>
-    <p>MIS Executives Led</p>
-</div>
-
-<div class="stat">
-    <h2>3+</h2>
-    <p>Organizations</p>
-</div>
-
-<div class="stat">
-    <h2>360°</h2>
-    <p>Operational View</p>
-</div>
-
-</div>
+<p>Years Experience</p>
 
 </div>
 
 
-<!-- ================= ABOUT ================= -->
+<div class="stat reveal">
+
+<div class="stat-number">
+<span class="counter" data-target="5">0</span><span>+</span>
+</div>
+
+<p>MIS Team Members</p>
+
+</div>
+
+
+<div class="stat reveal">
+
+<div class="stat-number">
+<span class="counter" data-target="3">0</span>
+</div>
+
+<p>Major Organizations</p>
+
+</div>
+
+
+<div class="stat reveal">
+
+<div class="stat-number">
+<span class="counter" data-target="3">0</span>
+</div>
+
+<p>Business Domains</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     ABOUT
+======================================================= -->
 
 <section class="about" id="about">
 
-<div class="container about-grid">
+<div class="container">
+
+<div class="section-label reveal">
+About Me
+</div>
+
+<h2 class="section-title reveal">
+More than<br>
+just numbers.
+</h2>
+
+
+<div class="about-grid">
+
+<div class="about-big reveal">
+
+I make complex
+<span>data simple.</span>
+
+</div>
+
+
+<div class="about-text reveal">
+
+<p>
+I am an experienced MIS professional with 8+ years of
+experience in MIS reporting, data analysis, workforce
+management, performance tracking and business reporting.
+</p>
+
+<p>
+I work extensively with large customer datasets, daily,
+weekly and monthly MIS, Excel dashboards, KPI reports,
+management reports and operational performance analysis.
+</p>
+
+<p>
+My experience covers BPO and Telecom operations including
+Airtel DTH, Broadband, Prepaid, Postpaid, Retention,
+CPE Recovery, New Acquisition, VAS and Installation processes.
+</p>
+
+
+<div class="about-points">
+
+<div class="about-point">
+<strong>MIS Reporting</strong>
+<span>Daily · Weekly · Monthly</span>
+</div>
+
+<div class="about-point">
+<strong>Data Analysis</strong>
+<span>KPI · Trend · Performance</span>
+</div>
+
+<div class="about-point">
+<strong>Automation</strong>
+<span>Advanced Excel · VBA</span>
+</div>
+
+<div class="about-point">
+<strong>Workforce Management</strong>
+<span>WFM · Productivity · AHT</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =======================================================
+     EXPERIENCE
+======================================================= -->
+
+<section id="experience">
+
+<div class="container">
+
+<div class="section-label reveal">
+Career
+</div>
+
+<h2 class="section-title reveal">
+Experience
+</h2>
+
+<p class="section-subtitle reveal">
+8+ years across MIS reporting, business analytics,
+WFM and Telecom operations.
+</p>
+
+
+<div class="experience-list">
+
+
+<div class="experience-card reveal">
+
+<div class="experience-date">
+NOV 2020 — PRESENT
+</div>
 
 <div>
 
-<div class="label">
-    About Me
-</div>
-
-<div class="about-number">
-    08
-</div>
-
-</div>
-
-
-<div class="about-copy">
-
-<h2 class="title">
-    Turning operational<br>
-    data into useful<br>
-    decisions.
-</h2>
-
-<br>
-
-<p>
-I am an MIS professional with 8+ years of experience in
-MIS reporting, data analysis, workforce management,
-performance tracking and business reporting across BPO
-and Telecom operations.
-</p>
-
-<p>
-Experienced in handling large customer datasets, preparing
-daily, weekly and monthly MIS, Excel dashboards, KPI reports,
-management reports and performance analysis.
-</p>
-
-<p>
-Strong exposure to Airtel DTH, Broadband, Prepaid,
-Postpaid, Retention, CPE Recovery, New Acquisition,
-VAS and Installation processes.
-</p>
-
-<div class="pills">
-
-<span class="pill">MIS Reporting</span>
-<span class="pill">Data Analysis</span>
-<span class="pill">WFM</span>
-<span class="pill">KPI Analysis</span>
-<span class="pill">Business Reporting</span>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ================= EXPERTISE ================= -->
-
-<section class="services" id="services">
-
-<div class="container">
-
-<div class="label">
-    My Expertise
-</div>
-
-<h2 class="title">
-    Everything you need<br>
-    from an MIS professional.
-</h2>
-
-<p class="description">
-    Reporting, analysis, dashboards and operational insights
-    built around business requirements.
-</p>
-
-
-<div class="service-grid">
-
-<div class="service">
-
-<div class="service-icon">01</div>
-
-<h3>MIS Reporting</h3>
-
-<p>
-Daily, weekly and monthly MIS, management reports,
-business reporting and operational dashboards.
-</p>
-
-</div>
-
-
-<div class="service">
-
-<div class="service-icon">02</div>
-
-<h3>Advanced Excel</h3>
-
-<p>
-Pivot Tables, XLOOKUP, VLOOKUP, INDEX-MATCH,
-SUMIFS, COUNTIFS, Power Query and dashboards.
-</p>
-
-</div>
-
-
-<div class="service">
-
-<div class="service-icon">03</div>
-
-<h3>Data Analysis</h3>
-
-<p>
-KPI analysis, productivity, MoM, YoY,
-customer behaviour and root cause analysis.
-</p>
-
-</div>
-
-
-<div class="service">
-
-<div class="service-icon">04</div>
-
-<h3>WFM Analytics</h3>
-
-<p>
-Attendance, login hours, AHT, occupancy,
-utilization and productivity analysis.
-</p>
-
-</div>
-
-
-<div class="service">
-
-<div class="service-icon">05</div>
-
-<h3>Business Reporting</h3>
-
-<p>
-Sales, revenue, retention, recovery,
-productivity and achievement tracking.
-</p>
-
-</div>
-
-
-<div class="service">
-
-<div class="service-icon">06</div>
-
-<h3>Report Automation</h3>
-
-<p>
-Advanced Excel techniques to reduce repetitive
-manual reporting and improve accuracy.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ================= EXPERIENCE ================= -->
-
-<section class="experience" id="experience">
-
-<div class="container">
-
-<div class="label">
-    Career Journey
-</div>
-
-<h2 class="title">
-    Experience that<br>
-    makes the difference.
-</h2>
-
-<p class="description">
-    From broadband operations to senior MIS responsibilities
-    across telecom and BPO environments.
-</p>
-
-
-<div class="timeline">
-
-<div class="job">
-
-<div class="job-date">
-    NOV 2020 — PRESENT
-</div>
-
-<h3>
-    Senior MIS Executive
-</h3>
+<h3>Senior MIS Executive</h3>
 
 <div class="company">
-    LEEWAY INTERNATIONAL PVT. LTD.
+Leeway International Pvt. Ltd.
 </div>
 
 <p>
-Manage MIS and business reporting for multiple Airtel
-Telecom and DTH processes including DTH Retention,
-CPE Recovery, New Acquisition, VAS, Postpaid and
-Prepaid Acquisition. Lead a team of 5 MIS Executives.
-Work with large customer datasets, build dashboards,
-monitor WFM and agent performance, track KPIs and
-coordinate with Operations, HR, Finance, Quality, WFM
-and Client teams.
+Manage MIS and business reporting for multiple Airtel Telecom
+and DTH processes. Lead a team of MIS Executives and manage
+daily MIS requirements, customer datasets, dashboards, KPIs,
+WFM and operational analysis.
 </p>
 
 </div>
 
-
-<div class="job">
-
-<div class="job-date">
-    AUG 2018 — NOV 2020
 </div>
 
-<h3>
-    MIS Executive / Field Coordinator
-</h3>
+
+<div class="experience-card reveal">
+
+<div class="experience-date">
+AUG 2018 — NOV 2020
+</div>
+
+<div>
+
+<h3>MIS Executive / Field Coordinator</h3>
 
 <div class="company">
-    SIGMA OUTSOURCING PVT. LTD.
+Sigma Outsourcing Pvt. Ltd.
 </div>
 
 <p>
 Managed MIS and field operations for Airtel Broadband
-Installation in Delhi NCR. Coordinated with Airtel HDO,
-GIS, Marketing, Field and Technical teams. Prepared
-daily, weekly and monthly reports covering leads,
-installation, closure, productivity and operational KPIs.
+Installation in Delhi NCR, including lead tracking,
+installation, closure, productivity reporting and
+coordination with field and technical teams.
 </p>
 
 </div>
 
-
-<div class="job">
-
-<div class="job-date">
-    AUG 2017 — AUG 2018
 </div>
 
-<h3>
-    MIS Executive
-</h3>
+
+<div class="experience-card reveal">
+
+<div class="experience-date">
+AUG 2017 — AUG 2018
+</div>
+
+<div>
+
+<h3>MIS Executive</h3>
 
 <div class="company">
-    LEEWAY BPO
+Leeway BPO
 </div>
 
 <p>
 Managed MIS reporting for Airtel Broadband lead generation
-operations across India. Prepared performance reports,
-managed WFM and agent reporting, monitored campaign KPIs
-and supported Operations teams with daily reporting and
-performance tracking.
+operations across India. Prepared daily, weekly and monthly
+reports, monitored campaign KPIs and supported operations
+teams with performance tracking.
 </p>
 
 </div>
+
+</div>
+
 
 </div>
 
@@ -1312,69 +1890,71 @@ performance tracking.
 </section>
 
 
-<!-- ================= BUSINESS ================= -->
+<!-- =======================================================
+     BUSINESS EXPOSURE
+======================================================= -->
 
-<section id="business">
+<section class="exposure">
 
 <div class="container">
 
-<div class="label">
-    Business Exposure
+<div class="section-label reveal">
+Business Exposure
 </div>
 
-<h2 class="title">
-    Telecom is where<br>
-    I built my expertise.
+<h2 class="section-title reveal">
+Domains I know.
 </h2>
 
-<p class="description">
-    Hands-on exposure across DTH, Telecom and Broadband
-    business processes.
-</p>
+
+<div class="exposure-grid">
 
 
-<div class="business-grid">
+<div class="exposure-card reveal">
 
-<div class="business-card">
+<div class="exposure-number">
+01
+</div>
 
 <h3>Airtel DTH</h3>
 
 <p>
-DTH Retention<br>
-CPE Recovery<br>
-New Acquisition<br>
-VAS
+DTH Retention · CPE Recovery · New Acquisition · VAS
 </p>
 
 </div>
 
 
-<div class="business-card">
+<div class="exposure-card reveal">
+
+<div class="exposure-number">
+02
+</div>
 
 <h3>Airtel Telecom</h3>
 
 <p>
-Postpaid New Acquisition<br>
-Prepaid New Acquisition
+Postpaid New Acquisition · Prepaid New Acquisition
 </p>
 
 </div>
 
 
-<div class="business-card">
+<div class="exposure-card reveal">
+
+<div class="exposure-number">
+03
+</div>
 
 <h3>Airtel Broadband</h3>
 
 <p>
-Pan India Lead Generation<br>
-Delhi NCR Installation<br>
-Lead-to-Installation Tracking<br>
-Field Operations<br>
-Technical Coordination<br>
-Installation Closure
+Pan India Lead Generation · Delhi NCR Installation ·
+Lead-to-Installation Tracking · Field Operations
 </p>
 
 </div>
+
 
 </div>
 
@@ -1383,46 +1963,198 @@ Installation Closure
 </section>
 
 
-<!-- ================= SKILLS ================= -->
+<!-- =======================================================
+     SKILLS
+======================================================= -->
 
-<section class="skills" id="skills">
+<section id="skills">
 
 <div class="container">
 
-<div class="label">
-    Technical Skills
+<div class="section-label reveal">
+Toolkit
 </div>
 
-<h2 class="title">
-    My digital toolkit.
+<h2 class="section-title reveal">
+Skills & Tools
 </h2>
 
-<p class="description">
-    Strong working knowledge of Advanced Excel and Basic SQL,
-    with Power BI and Python currently being developed.
+<p class="section-subtitle reveal">
+Tools and capabilities used for reporting, analysis,
+automation and business performance tracking.
 </p>
 
 
-<div class="skills-list">
+<div class="skills-grid">
 
-<span class="skill">Advanced Excel</span>
-<span class="skill">Pivot Tables</span>
-<span class="skill">XLOOKUP</span>
-<span class="skill">VLOOKUP</span>
-<span class="skill">INDEX-MATCH</span>
-<span class="skill">SUMIFS</span>
-<span class="skill">COUNTIFS</span>
-<span class="skill">Power Query</span>
-<span class="skill">Excel Dashboards</span>
-<span class="skill">Basic SQL</span>
-<span class="skill">Joins</span>
-<span class="skill">CTEs</span>
-<span class="skill">CASE WHEN</span>
-<span class="skill">GROUP BY</span>
-<span class="skill">Aggregations</span>
-<span class="skill">PowerPoint</span>
-<span class="skill">Power BI — Learning</span>
-<span class="skill">Python — Learning</span>
+
+<div class="skill reveal">
+
+<div class="skill-top">
+<span class="skill-name">Advanced Excel</span>
+<span class="skill-level">Advanced</span>
+</div>
+
+<div class="skill-track">
+<div class="skill-bar" data-width="92%"></div>
+</div>
+
+</div>
+
+
+<div class="skill reveal">
+
+<div class="skill-top">
+<span class="skill-name">Pivot Tables / Charts</span>
+<span class="skill-level">Advanced</span>
+</div>
+
+<div class="skill-track">
+<div class="skill-bar" data-width="90%"></div>
+</div>
+
+</div>
+
+
+<div class="skill reveal">
+
+<div class="skill-top">
+<span class="skill-name">XLOOKUP / VLOOKUP</span>
+<span class="skill-level">Advanced</span>
+</div>
+
+<div class="skill-track">
+<div class="skill-bar" data-width="92%"></div>
+</div>
+
+</div>
+
+
+<div class="skill reveal">
+
+<div class="skill-top">
+<span class="skill-name">Power Query</span>
+<span class="skill-level">Advanced</span>
+</div>
+
+<div class="skill-track">
+<div class="skill-bar" data-width="85%"></div>
+</div>
+
+</div>
+
+
+<div class="skill reveal">
+
+<div class="skill-top">
+<span class="skill-name">Excel Dashboards</span>
+<span class="skill-level">Advanced</span>
+</div>
+
+<div class="skill-track">
+<div class="skill-bar" data-width="90%"></div>
+</div>
+
+</div>
+
+
+<div class="skill reveal">
+
+<div class="skill-top">
+<span class="skill-name">WFM Reporting</span>
+<span class="skill-level">Advanced</span>
+</div>
+
+<div class="skill-track">
+<div class="skill-bar" data-width="88%"></div>
+</div>
+
+</div>
+
+
+<div class="skill reveal">
+
+<div class="skill-top">
+<span class="skill-name">KPI Analysis</span>
+<span class="skill-level">Advanced</span>
+</div>
+
+<div class="skill-track">
+<div class="skill-bar" data-width="90%"></div>
+</div>
+
+</div>
+
+
+<div class="skill reveal">
+
+<div class="skill-top">
+<span class="skill-name">Root Cause Analysis</span>
+<span class="skill-level">Advanced</span>
+</div>
+
+<div class="skill-track">
+<div class="skill-bar" data-width="87%"></div>
+</div>
+
+</div>
+
+
+<div class="skill reveal">
+
+<div class="skill-top">
+<span class="skill-name">SQL</span>
+<span class="skill-level">Working</span>
+</div>
+
+<div class="skill-track">
+<div class="skill-bar" data-width="60%"></div>
+</div>
+
+</div>
+
+
+<div class="skill reveal">
+
+<div class="skill-top">
+<span class="skill-name">Power BI</span>
+<span class="skill-level">Learning</span>
+</div>
+
+<div class="skill-track">
+<div class="skill-bar" data-width="45%"></div>
+</div>
+
+</div>
+
+
+<div class="skill reveal">
+
+<div class="skill-top">
+<span class="skill-name">Python / Pandas</span>
+<span class="skill-level">Learning</span>
+</div>
+
+<div class="skill-track">
+<div class="skill-bar" data-width="42%"></div>
+</div>
+
+</div>
+
+
+<div class="skill reveal">
+
+<div class="skill-top">
+<span class="skill-name">Business Reporting</span>
+<span class="skill-level">Advanced</span>
+</div>
+
+<div class="skill-track">
+<div class="skill-bar" data-width="91%"></div>
+</div>
+
+</div>
+
 
 </div>
 
@@ -1431,73 +2163,160 @@ Installation Closure
 </section>
 
 
-<!-- ================= EDUCATION ================= -->
+<!-- =======================================================
+     PROJECTS
+======================================================= -->
 
-<section class="education" id="education">
+<section class="projects" id="projects">
 
 <div class="container">
 
-<div class="label">
-    Education
+<div class="section-label reveal">
+Selected Work
 </div>
 
-<h2 class="title">
-    Academic foundation.
+<h2 class="section-title reveal">
+What I build.
 </h2>
 
 
-<div class="edu-grid">
+<div class="project-grid">
 
-<div class="edu">
 
-<div class="edu-year">
-    2022
+<div
+class="project reveal"
+data-project="dashboard"
+>
+
+<div class="project-top">
+
+<span class="project-tag">
+EXCEL
+</span>
+
+<span class="project-arrow">
+↗
+</span>
+
 </div>
 
 <h3>
-    Bachelor of Arts
+MIS Performance Dashboard
 </h3>
 
 <p>
-Dr. Ram Manohar Lohia Avadh University,
-Ayodhya
+Excel-based dashboards for sales, revenue,
+productivity, WFM, KPIs and operational
+performance tracking.
 </p>
+
+<span class="project-view">
+View Case Study →
+</span>
 
 </div>
 
 
-<div class="edu">
+<div
+class="project reveal"
+data-project="wfm"
+>
 
-<div class="edu-year">
-    2017
+<div class="project-top">
+
+<span class="project-tag">
+WFM
+</span>
+
+<span class="project-arrow">
+↗
+</span>
+
 </div>
 
 <h3>
-    12th
+Workforce Performance Reporting
 </h3>
 
 <p>
-UP Board
+Reporting around attendance, login hours, AHT,
+productivity, occupancy, utilization, calls
+handled and target achievement.
 </p>
+
+<span class="project-view">
+View Case Study →
+</span>
 
 </div>
 
 
-<div class="edu">
+<div
+class="project reveal"
+data-project="analytics"
+>
 
-<div class="edu-year">
-    2015
+<div class="project-top">
+
+<span class="project-tag">
+ANALYTICS
+</span>
+
+<span class="project-arrow">
+↗
+</span>
+
 </div>
 
 <h3>
-    10th
+KPI & Revenue Analysis
 </h3>
 
 <p>
-UP Board
+Analysis of leads, attempts, connects, conversions,
+sales, retention, recovery, revenue and achievement.
 </p>
 
+<span class="project-view">
+View Case Study →
+</span>
+
 </div>
+
+
+<div
+class="project reveal"
+data-project="automation"
+>
+
+<div class="project-top">
+
+<span class="project-tag">
+AUTOMATION
+</span>
+
+<span class="project-arrow">
+↗
+</span>
+
+</div>
+
+<h3>
+Automated MIS Reporting
+</h3>
+
+<p>
+Recurring reporting workflows using Advanced Excel
+and reporting techniques to reduce manual effort
+and improve accuracy.
+</p>
+
+<span class="project-view">
+View Case Study →
+</span>
+
+</div>
+
 
 </div>
 
@@ -1506,70 +2325,46 @@ UP Board
 </section>
 
 
-<!-- ================= SUPPORT STYLE CONTACT ================= -->
+<!-- =======================================================
+     EDUCATION
+======================================================= -->
 
-<section class="support">
+<section>
 
 <div class="container">
 
-<div class="label">
-    Quick Connect
+<div class="section-label reveal">
+Education
 </div>
 
-<h2 class="title">
-    Need to know more?
+<h2 class="section-title reveal">
+Education
 </h2>
 
-<div class="support-box">
 
-<div class="support-card">
+<div class="education-card reveal">
 
-<h3>Resume</h3>
-
-<p>
-Want to know more about my professional
-experience and responsibilities?
-</p>
-
-<a class="support-link" href="#experience">
-    View Experience →
-</a>
-
-</div>
-
-
-<div class="support-card">
-
-<h3>LinkedIn</h3>
+<h3>
+Bachelor of Arts (B.A.)
+</h3>
 
 <p>
-Connect with me professionally and
-follow my career journey.
+Dr. Ram Manohar Lohia Avadh University, Ayodhya
 </p>
-
-<a class="support-link"
-href="https://linkedin.com/in/Sheshram-prajapati"
-target="_blank">
-    Open LinkedIn →
-</a>
-
-</div>
-
-
-<div class="support-card">
-
-<h3>Let's Talk</h3>
 
 <p>
-Have an opportunity or business requirement?
-Let's connect directly.
+2022
 </p>
 
-<a class="support-link" href="#contact">
-    Contact Me →
-</a>
+<br>
 
-</div>
+<p>
+12th — UP Board · 2017
+</p>
+
+<p>
+10th — UP Board · 2015
+</p>
 
 </div>
 
@@ -1578,61 +2373,46 @@ Let's connect directly.
 </section>
 
 
-<!-- ================= CONTACT ================= -->
+<!-- =======================================================
+     CONTACT
+======================================================= -->
 
 <section class="contact" id="contact">
 
-<div class="container contact-grid">
+<div class="container">
 
-<div>
+<div class="contact-box reveal">
 
-<div class="label">
-    Contact
+<div class="section-label">
+Contact
 </div>
 
 <h2>
-    Let's connect<br>
-    and talk data.
+Let's connect for the
+<span>next opportunity.</span>
 </h2>
 
-<p class="contact-text">
-    Open to opportunities in MIS, Data Analytics,
-    Workforce Management and Business Reporting.
+<p>
+Open to MIS, Reporting, Data Analytics, WFM and related
+opportunities in Delhi NCR.
 </p>
 
-</div>
 
-
-<div class="contact-card">
-
-<div class="contact-item">
-
-<small>Email</small>
-
-<a href="mailto:srp8046@gmail.com">
-    srp8046@gmail.com
-</a>
-
-</div>
+<div class="contact-details">
 
 
 <div class="contact-item">
 
-<small>Phone</small>
-
-<a href="tel:+917565008895">
-    +91 7565008895
-</a>
-
+<div class="contact-icon">
+✉
 </div>
 
-
-<div class="contact-item">
-
-<small>Location</small>
+<small>
+Email
+</small>
 
 <strong>
-    Delhi, India
+srp8046@gmail.com
 </strong>
 
 </div>
@@ -1640,11 +2420,73 @@ Let's connect directly.
 
 <div class="contact-item">
 
-<small>LinkedIn</small>
+<div class="contact-icon">
+☎
+</div>
 
-<a href="https://linkedin.com/in/Sheshram-prajapati"
-target="_blank">
-    linkedin.com/in/Sheshram-prajapati →
+<small>
+Phone
+</small>
+
+<strong>
++91 7565008895
+</strong>
+
+</div>
+
+
+<div class="contact-item">
+
+<div class="contact-icon">
+⌖
+</div>
+
+<small>
+Location
+</small>
+
+<strong>
+Delhi NCR, India
+</strong>
+
+</div>
+
+
+</div>
+
+
+<div class="contact-actions">
+
+<a
+href="mailto:srp8046@gmail.com"
+class="btn btn-red"
+>
+✉ Email Me
+</a>
+
+<a
+href="tel:+917565008895"
+class="btn btn-outline"
+>
+☎ Call Me
+</a>
+
+<a
+href="https://www.linkedin.com/in/Sheshram-prajapati"
+target="_blank"
+rel="noopener"
+class="btn btn-outline"
+>
+in LinkedIn ↗
+</a>
+
+<a
+href="https://github.com/srp8046-del"
+target="_blank"
+rel="noopener"
+class="btn btn-outline"
+>
+GitHub ↗
 </a>
 
 </div>
@@ -1655,73 +2497,675 @@ target="_blank">
 
 </section>
 
+</main>
 
-<!-- ================= FOOTER ================= -->
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
 
 <footer>
 
-<div class="container footer">
-
 <div>
-    <strong>Sheshram Prajapati</strong>
+© 2026 <strong>Sheshram Prajapati</strong>
 </div>
 
 <div>
-    MIS Executive · Data Analysis · WFM
-</div>
-
-<div>
-    © 2026
-</div>
-
+MIS · Data Analytics · Reporting · WFM
 </div>
 
 </footer>
 
 
+<!-- =======================================================
+     PROJECT MODAL
+======================================================= -->
+
+<div class="modal" id="projectModal">
+
+<div class="modal-box">
+
+<button
+class="modal-close"
+id="modalClose"
+aria-label="Close"
+>
+×
+</button>
+
+<div class="modal-tag" id="modalTag">
+PROJECT
+</div>
+
+<h2 id="modalTitle">
+Project
+</h2>
+
+<p id="modalDescription">
+Project description.
+</p>
+
+<div class="modal-list">
+
+<div id="modalTools">
+<strong>Tools:</strong> Excel
+</div>
+
+<div id="modalFocus">
+<strong>Focus:</strong> Reporting
+</div>
+
+<div id="modalOutcome">
+<strong>Outcome:</strong> Better visibility and decision making.
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
 <script>
 
-/* Header shadow */
+/* =========================================================
+   MOBILE MENU
+========================================================= */
 
-window.addEventListener("scroll",function(){
+const menu = document.getElementById("menu");
+const navLinks = document.getElementById("navLinks");
 
-    const header=document.getElementById("header");
+menu.addEventListener("click", () => {
 
-    if(window.scrollY>20){
-        header.classList.add("scrolled");
-    }else{
-        header.classList.remove("scrolled");
-    }
+    navLinks.classList.toggle("active");
+    document.body.classList.toggle("menu-open");
 
 });
 
+document.querySelectorAll(".nav-links a").forEach(link => {
 
-/* Mobile menu */
+    link.addEventListener("click", () => {
 
-function toggleMenu(){
-
-    document
-    .getElementById("navLinks")
-    .classList
-    .toggle("active");
-
-}
-
-
-/* Close mobile menu */
-
-document.querySelectorAll(".nav-links a").forEach(function(link){
-
-    link.addEventListener("click",function(){
-
-        document
-        .getElementById("navLinks")
-        .classList
-        .remove("active");
+        navLinks.classList.remove("active");
+        document.body.classList.remove("menu-open");
 
     });
 
 });
+
+
+/* =========================================================
+   THEME TOGGLE
+========================================================= */
+
+const themeToggle =
+    document.getElementById("themeToggle");
+
+const savedTheme =
+    localStorage.getItem("portfolio-theme");
+
+if(savedTheme){
+
+    document.documentElement
+        .setAttribute("data-theme", savedTheme);
+
+    themeToggle.textContent =
+        savedTheme === "light" ? "☀" : "☾";
+
+}
+
+themeToggle.addEventListener("click", () => {
+
+    const current =
+        document.documentElement
+        .getAttribute("data-theme");
+
+    const next =
+        current === "light" ? "dark" : "light";
+
+    document.documentElement
+        .setAttribute("data-theme", next);
+
+    localStorage.setItem(
+        "portfolio-theme",
+        next
+    );
+
+    themeToggle.textContent =
+        next === "light" ? "☀" : "☾";
+
+});
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if(entry.isIntersecting){
+
+                    entry.target
+                        .classList.add("show");
+
+                    observer.unobserve(
+                        entry.target
+                    );
+
+                }
+
+            });
+
+        },
+        {
+            threshold:.12
+        }
+    );
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(element => {
+
+        observer.observe(element);
+
+    });
+
+
+/* =========================================================
+   ACTIVE NAVIGATION
+========================================================= */
+
+const sections =
+    document.querySelectorAll(
+        "section[id]"
+    );
+
+const navItems =
+    document.querySelectorAll(
+        ".nav-links a"
+    );
+
+const sectionObserver =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if(entry.isIntersecting){
+
+                    navItems.forEach(link => {
+
+                        link.classList.remove(
+                            "active"
+                        );
+
+                        if(
+                            link.getAttribute("href")
+                            === "#" + entry.target.id
+                        ){
+
+                            link.classList.add(
+                                "active"
+                            );
+
+                        }
+
+                    });
+
+                }
+
+            });
+
+        },
+        {
+            rootMargin:"-35% 0px -55% 0px"
+        }
+    );
+
+
+sections.forEach(section => {
+
+    sectionObserver.observe(section);
+
+});
+
+
+/* =========================================================
+   ANIMATED COUNTERS
+========================================================= */
+
+const counters =
+    document.querySelectorAll(
+        ".counter"
+    );
+
+const counterObserver =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if(
+                    entry.isIntersecting
+                    && !entry.target.dataset.done
+                ){
+
+                    const counter =
+                        entry.target;
+
+                    const target =
+                        Number(
+                            counter.dataset.target
+                        );
+
+                    let current = 0;
+
+                    const duration = 1200;
+                    const start = performance.now();
+
+                    function animate(time){
+
+                        const progress =
+                            Math.min(
+                                (time - start) / duration,
+                                1
+                            );
+
+                        current =
+                            Math.floor(
+                                progress * target
+                            );
+
+                        counter.textContent =
+                            current;
+
+                        if(progress < 1){
+
+                            requestAnimationFrame(
+                                animate
+                            );
+
+                        }else{
+
+                            counter.textContent =
+                                target;
+
+                        }
+
+                    }
+
+                    counter.dataset.done = "true";
+
+                    requestAnimationFrame(
+                        animate
+                    );
+
+                }
+
+            });
+
+        },
+        {
+            threshold:.6
+        }
+    );
+
+
+counters.forEach(counter => {
+
+    counterObserver.observe(counter);
+
+});
+
+
+/* =========================================================
+   SKILL BAR ANIMATION
+========================================================= */
+
+const skillBars =
+    document.querySelectorAll(
+        ".skill-bar"
+    );
+
+const skillObserver =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if(entry.isIntersecting){
+
+                    const bar =
+                        entry.target;
+
+                    bar.style.width =
+                        bar.dataset.width;
+
+                    skillObserver.unobserve(bar);
+
+                }
+
+            });
+
+        },
+        {
+            threshold:.4
+        }
+    );
+
+
+skillBars.forEach(bar => {
+
+    skillObserver.observe(bar);
+
+});
+
+
+/* =========================================================
+   PROJECT DATA
+========================================================= */
+
+const projectData = {
+
+    dashboard: {
+
+        tag:"EXCEL",
+
+        title:
+        "MIS Performance Dashboard",
+
+        description:
+        "A structured reporting dashboard concept designed for sales, revenue, productivity, WFM, KPI and operational performance tracking.",
+
+        tools:
+        "Advanced Excel · Pivot Tables · Charts · Power Query",
+
+        focus:
+        "Sales · Revenue · Productivity · KPI",
+
+        outcome:
+        "Improved visibility of operational performance and management reporting."
+
+    },
+
+
+    wfm: {
+
+        tag:"WFM",
+
+        title:
+        "Workforce Performance Reporting",
+
+        description:
+        "Reporting framework focused on workforce productivity and operational efficiency across attendance, login hours, AHT, occupancy and target achievement.",
+
+        tools:
+        "Excel · WFM Reporting · KPI Analysis",
+
+        focus:
+        "Attendance · AHT · Productivity · Utilization",
+
+        outcome:
+        "Better understanding of workforce performance and productivity gaps."
+
+    },
+
+
+    analytics: {
+
+        tag:"ANALYTICS",
+
+        title:
+        "KPI & Revenue Analysis",
+
+        description:
+        "Business analysis framework covering leads, attempts, connects, conversions, sales, retention, recovery, revenue and achievement.",
+
+        tools:
+        "Excel · KPI Analysis · Business Reporting",
+
+        focus:
+        "Conversion · Revenue · Achievement",
+
+        outcome:
+        "Clearer identification of performance trends and business gaps."
+
+    },
+
+
+    automation: {
+
+        tag:"AUTOMATION",
+
+        title:
+        "Automated MIS Reporting",
+
+        description:
+        "Reporting workflows designed to reduce repetitive manual work while improving consistency and accuracy of recurring MIS.",
+
+        tools:
+        "Advanced Excel · Power Query · VBA",
+
+        focus:
+        "Automation · Recurring MIS · Data Processing",
+
+        outcome:
+        "Reduced manual effort and improved reporting consistency."
+
+    }
+
+};
+
+
+/* =========================================================
+   PROJECT MODAL
+========================================================= */
+
+const projectModal =
+    document.getElementById(
+        "projectModal"
+    );
+
+const modalClose =
+    document.getElementById(
+        "modalClose"
+    );
+
+const modalTag =
+    document.getElementById(
+        "modalTag"
+    );
+
+const modalTitle =
+    document.getElementById(
+        "modalTitle"
+    );
+
+const modalDescription =
+    document.getElementById(
+        "modalDescription"
+    );
+
+const modalTools =
+    document.getElementById(
+        "modalTools"
+    );
+
+const modalFocus =
+    document.getElementById(
+        "modalFocus"
+    );
+
+const modalOutcome =
+    document.getElementById(
+        "modalOutcome"
+    );
+
+
+document
+    .querySelectorAll(".project")
+    .forEach(project => {
+
+        project.addEventListener(
+            "click",
+            () => {
+
+                const key =
+                    project.dataset.project;
+
+                const data =
+                    projectData[key];
+
+                if(!data) return;
+
+                modalTag.textContent =
+                    data.tag;
+
+                modalTitle.textContent =
+                    data.title;
+
+                modalDescription.textContent =
+                    data.description;
+
+                modalTools.innerHTML =
+                    "<strong>Tools:</strong> "
+                    + data.tools;
+
+                modalFocus.innerHTML =
+                    "<strong>Focus:</strong> "
+                    + data.focus;
+
+                modalOutcome.innerHTML =
+                    "<strong>Outcome:</strong> "
+                    + data.outcome;
+
+                projectModal.classList.add(
+                    "active"
+                );
+
+                document.body.classList.add(
+                    "menu-open"
+                );
+
+            }
+        );
+
+    });
+
+
+function closeModal(){
+
+    projectModal.classList.remove(
+        "active"
+    );
+
+    document.body.classList.remove(
+        "menu-open"
+    );
+
+}
+
+
+modalClose.addEventListener(
+    "click",
+    closeModal
+);
+
+
+projectModal.addEventListener(
+    "click",
+    event => {
+
+        if(
+            event.target === projectModal
+        ){
+
+            closeModal();
+
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if(event.key === "Escape"){
+
+            closeModal();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   CURSOR GLOW
+========================================================= */
+
+const cursorGlow =
+    document.getElementById(
+        "cursorGlow"
+    );
+
+if(
+    window.matchMedia(
+        "(pointer:fine)"
+    ).matches
+){
+
+    document.addEventListener(
+        "mousemove",
+        event => {
+
+            cursorGlow.style.left =
+                event.clientX + "px";
+
+            cursorGlow.style.top =
+                event.clientY + "px";
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   PARALLAX HERO
+========================================================= */
+
+const heroOrb =
+    document.querySelector(
+        ".hero-orb"
+    );
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        const scroll =
+            window.scrollY;
+
+        if(heroOrb){
+
+            heroOrb.style.transform =
+                `translateY(${scroll * .08}px)`;
+
+        }
+
+    },
+    {
+        passive:true
+    }
+);
 
 </script>
 
